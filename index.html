@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCP-173</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            background: linear-gradient(135deg, #e2e2e2, #ffffff); /* تدرج لوني خلفية */
+            color: #333;
+            overflow-x: hidden; /* منع التمرير الأفقي */
+        }
+        header {
+            background: #00796b; /* خلفية رأسية */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* ظل عميق للرأس */
+            position: relative;
+            border-bottom: 5px solid #004d40; /* خط ملون أسفل الرأس */
+            z-index: 10;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 4rem; /* حجم خط كبير للرأس */
+            letter-spacing: 1.5px;
+            text-transform: uppercase; /* تحويل النص إلى حروف كبيرة */
+        }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        h1, h2, h3 {
+            color: #222;
+            margin-top: 0;
+        }
+        h2 {
+            margin-top: 20px;
+            font-size: 3rem;
+            border-bottom: 4px solid #00796b;
+            padding-bottom: 15px;
+            background: rgba(255, 255, 255, 0.9); /* خلفية نصوص */
+            border-radius: 8px; /* زوايا دائرية للعناوين الثانوية */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        h3 {
+            margin-top: 20px;
+            font-size: 2.5rem;
+            color: #004d40;
+        }
+        p {
+            margin: 20px 0;
+            font-size: 20px;
+            text-align: justify;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.95); /* خلفية شفافة للنصوص */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .description {
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            max-width: 1000px;
+            position: relative;
+            border-left: 12px solid #00796b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .description:hover {
+            transform: scale(1.02); /* تكبير طفيف عند التمرير */
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4); /* ظل أعمق عند التمرير */
+        }
+        .description::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -20px;
+            height: 100%;
+            width: 20px;
+            background: linear-gradient(135deg, #00796b, transparent);
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        a {
+            color: #00796b;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, text-shadow 0.3s;
+            position: relative;
+        }
+        a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            height: 4px;
+            width: 0;
+            background: #00796b;
+            transition: width 0.3s;
+        }
+        a:hover::after, a:focus::after {
+            width: 100%;
+        }
+        img {
+            border: none;
+            border-radius: 10px; /* زوايا دائرية للمربع */
+            display: block;
+            margin: 30px auto;
+            max-width: 400px;
+            height: auto; /* ضمان الحفاظ على نسبة العرض إلى الارتفاع */
+            object-fit: cover; /* ضبط محتوى الصورة داخل الإطار */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        img:hover {
+            transform: scale(1.05); /* تكبير الصورة عند التمرير */
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4); /* إضافة ظل للصورة */
+        }
+        hr {
+            border: 0;
+            border-top: 4px solid #00796b;
+            margin: 40px 0;
+            opacity: 0.8; /* شفافية للخط */
+        }
+        video {
+            display: block;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        video:hover {
+            transform: scale(1.03); /* تكبير الفيديو عند التمرير */
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+        }
+        footer {
+            background: #00796b; /* خلفية التذييل */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border-top: 5px solid #004d40;
+            z-index: 10;
+        }
+        footer p {
+            margin: 0;
+            font-size: 18px;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .description {
+                padding: 20px;
+            }
+            p, h2, h3 {
+                font-size: 1.2rem;
+            }
+            video {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SCP Foundation</h1>
+    </header>
+    <main>
+        <img src='SCP-173.png' alt="SCP-173">
+        <h2>SCP-173</h2>
+        <p>
+            SCP-173 هو كائن خيالي من عالم SCP، وهي منظمة خيالية متخصصة في احتواء ودراسة الكائنات الخارقة والطبيعية. SCP-173 يُعرف بـ "التمثال المتحرك" أو "التمثال المتوحش". فيما يلي وصفه:
+        </p>
+        <div class="description">
+            <hr>
+            <p><strong>التصنيف:</strong> Euclid (يحتاج إلى إشراف دائم واحتياطات أمان)</p>
+            <p><strong>الظهور:</strong> يبدو كتمثال ضخم من الخرسانة والصلب، وهو منحوت على شكل إنسان مع وجه مشوه وملامح غير واضحة. بعض التقارير تصفه بأنه يتميز بعيون كبيرة وصغيرة.</p>
+            <p><strong>السلوك:</strong> SCP-173 يتحرك بسرعة فائقة عند عدم مراقبته مباشرة. إذا تم إغلاق العينين أو إذا تم تجاهله، يقوم SCP-173 بالتحرك بسرعة نحو ضحيته ويهاجمها بطرق مميتة، مثل كسر الرقبة أو توجيه الضحية نحو الحائط.</p>
+            <p><strong>الاحتواء:</strong> SCP-173 يجب أن يُحفظ في حاوية مغلقة بإحكام، ويجب على أي شخص يدخل إلى الحاوية أن يحافظ على النظر إليه بشكل مستمر. يتطلب وجود فريق أمني متكامل أثناء عمليات الصيانة.</p>
+            <p><strong>ملاحظات إضافية:</strong></p>
+            <ul>
+                <li>SCP-173 غير قادر على التحدث أو التفاعل لفظيًا، ولكن قدرته على الحركة السريعة عندما لا يتم مراقبته تجعله خطيرًا جدًا.</li>
+                <li>يتطلب إجراء التحديثات والصيانة على حاوية SCP-173 فريقًا مخصصًا لضمان عدم وقوع أي حادث.</li>
+            </ul>
+        </div>
+        <p>سيرفر ديسكورد
+            <a href="https://discord.gg/XC8Ud7Pj">اضغط هنا</a>
+        </p>
+        <h3>scp-173</h3>
+        <video controls>
+            <source src="0820.mp4" type="video/mp4">
+            عذرا لا يمكن عرض هذا الفيديو
+            Sorry this video cannot be displayed.
+        </video>
+    </main>
+    <footer>
+        <p>&copy; 2024 SCP Foundation. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>
